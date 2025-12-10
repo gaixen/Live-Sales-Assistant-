@@ -11,3 +11,4 @@ pyaudio
 assemblyai
 # dotenv
 pyttsx3
+python-dotenv

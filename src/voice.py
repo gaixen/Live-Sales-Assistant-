@@ -3,17 +3,20 @@ import json
 import threading
 import time
 import wave
+#import logging
 from urllib.parse import urlencode
 from datetime import datetime
+import websocket
+
+#logging.basicConfig(level=logging.INFO)
+#logger = #logging.getLogger(__name__)
+
 try:
     import pyaudio
     PYAUDIO_AVAILABLE = True
-except ImportError:
+except Exception as e:
     PYAUDIO_AVAILABLE = False
-    print("Warning: PyAudio not available. Voice functionality will be limited.")
-import websocket
-from dotenv import load_dotenv
-
+    #logger.warning(f"Warning: PyAudio not available. Voice functionality will be limited.: {str(e)}")
 
 class AssemblyAIRealtimeTranscriber:
     def __init__(self, api_key: str, sample_rate: int = 16000, frames_per_buffer: int = 800, on_transcript_callback=None):
@@ -298,8 +301,8 @@ class AssemblyAIRealtimeTranscriber:
             print("✅ Cleanup completed")
 
 if __name__ == "__main__":
+    from dotenv import load_dotenv
     load_dotenv()
-    api_key = os.getenv("ASSEMBLYAI_API_KEY")
-    
+    api_key = os.getenv('ASSEMBLYAI_API_KEY')
     transcriber = AssemblyAIRealtimeTranscriber(api_key)
     transcriber.start()

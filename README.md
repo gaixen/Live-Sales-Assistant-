@@ -16,7 +16,12 @@
    pip install -r requirements.txt
    python -m spacy download en_core_web_sm
    ```
-
+    - or one can alternatively use 
+    ```sh
+    pip install uv
+    uv  init
+    uv add -r requirements.txt
+    ```
 3. **Set up environment variables**
    - Create a `.env` file in `src/` and add required API keys:
      ```
