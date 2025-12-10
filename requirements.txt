@@ -11,4 +11,4 @@ pyaudio
 assemblyai
 # dotenv
 pyttsx3
-python-dotenv
+python-dotenv==1.0.0
